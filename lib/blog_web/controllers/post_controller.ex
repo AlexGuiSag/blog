@@ -16,22 +16,7 @@ defmodule BlogWeb.PostController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def add_comment(conn, %{"comment" => comment_params, "post_id" => post_id}) do
-    post =
-      post_id
-      |> Content.get_post!()
-    #  |> Repo.preload([:comments])
-    case Content.add_comment(post_id, comment_params) do
-      {:ok, _comment} ->
-        conn
-        |> put_flash(:info, "Added comment!")
-        |> redirect(to: Routes.post_path(conn, :show, post))
-      {:error, _error} ->
-        conn
-        |> put_flash(:error, "Oops! Couldn't add comment!")
-        |> redirect(to: Routes.post_path(conn, :show, post))
-    end
-  end
+
   def create(conn, %{"post" => post_params}) do
     case Content.create_post(post_params) do
       {:ok, post} ->
