@@ -4,7 +4,7 @@ defmodule BlogWeb.PostController do
   alias Blog.Repo
   alias Blog.Content
   alias Blog.Content.Post
-  alias Blog.Subcontent.Comment
+  alias Blog.Social.Comment
 
   def index(conn, _params) do
     posts = Content.list_posts()

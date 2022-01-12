@@ -1,12 +1,12 @@
-defmodule Blog.Subcontent do
+defmodule Blog.Social do
   @moduledoc """
-  The Subcontent context.
+  The Social context.
   """
 
   import Ecto.Query, warn: false
   alias Blog.Repo
-
-  alias Blog.Subcontent.Comment
+  alias Blog.Social
+  alias Blog.Social.Comment
 
   @doc """
   Returns the list of comments.
@@ -100,5 +100,11 @@ defmodule Blog.Subcontent do
   """
   def change_comment(%Comment{} = comment, attrs \\ %{}) do
     Comment.changeset(comment, attrs)
+  end
+
+  def add_comment(post_id, comment_params) do
+    comment_params
+    |> Map.put("post_id", post_id)
+    |> Social.create_comment()
   end
 end

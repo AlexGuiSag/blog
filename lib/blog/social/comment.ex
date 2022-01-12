@@ -1,4 +1,4 @@
-defmodule Blog.Subcontent.Comment do
+defmodule Blog.Social.Comment do
   use Ecto.Schema
   import Ecto.Changeset
 

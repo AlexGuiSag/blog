@@ -5,7 +5,6 @@ defmodule Blog.Content do
 
   import Ecto.Query, warn: false
   alias Blog.Repo
-  alias Blog.Subcontent
   alias Blog.Content.Post
 
   @doc """
@@ -102,9 +101,4 @@ defmodule Blog.Content do
     Post.changeset(post, attrs)
   end
 
-  def add_comment(post_id, comment_params) do
-    comment_params
-    |> Map.put("post_id", post_id)
-    |> Subcontent.create_comment()
-  end
 end
