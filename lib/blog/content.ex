@@ -5,8 +5,8 @@ defmodule Blog.Content do
 
   import Ecto.Query, warn: false
   alias Blog.Repo
-  alias Blog.Subcontent
   alias Blog.Content.Post
+  alias Blog.Content
 
   @doc """
   Returns the list of posts.
@@ -101,10 +101,8 @@ defmodule Blog.Content do
   def change_post(%Post{} = post, attrs \\ %{}) do
     Post.changeset(post, attrs)
   end
-
-  def add_comment(post_id, comment_params) do
-    comment_params
-    |> Map.put("post_id", post_id)
-    |> Subcontent.create_comment()
+  def get_number_of_comments(post_id) do
+    post = Content.get_post!(post_id) |> Repo.preload([:comments])
+    Enum.count(post.comments)
   end
 end

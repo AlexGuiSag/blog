@@ -4,7 +4,6 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-
   <%= label f, :title %>
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
@@ -12,6 +11,14 @@
   <%= label f, :body %>
   <%= textarea f, :body %>
   <%= error_tag f, :body %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :email %>
+  <%= text_input f, :email %>
+  <%= error_tag f, :email %>
 
   <div>
     <%= submit "Save" %>

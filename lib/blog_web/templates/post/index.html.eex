@@ -5,6 +5,9 @@
     <tr>
       <th>Title</th>
       <th>Body</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Comments</th>
 
       <th></th>
     </tr>
@@ -12,8 +15,12 @@
   <tbody>
 <%= for post <- @posts do %>
     <tr>
-      <td><%= post.title %></td>
+     <td><%= post.title %></td>
       <td><%= post.body %></td>
+      <td><%= post.name %></td>
+      <td><%= post.email %></td>
+
+      <td><%=get_comments_count(post.id)%></td>
 
       <td>
         <span><%= link "Show", to: Routes.post_path(@conn, :show, post) %></span>

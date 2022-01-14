@@ -6,9 +6,9 @@ defmodule Blog.ContentTest do
   describe "posts" do
     alias Blog.Content.Post
 
-    @valid_attrs %{body: "some body", title: "some title"}
-    @update_attrs %{body: "some updated body", title: "some updated title"}
-    @invalid_attrs %{body: nil, title: nil}
+    @valid_attrs %{body: "some body", email: "some email", name: "some name", title: "some title"}
+    @update_attrs %{body: "some updated body", email: "some updated email", name: "some updated name", title: "some updated title"}
+    @invalid_attrs %{body: nil, email: nil, name: nil, title: nil}
 
     def post_fixture(attrs \\ %{}) do
       {:ok, post} =
@@ -30,8 +30,10 @@ defmodule Blog.ContentTest do
     end
 
     test "create_post/1 with valid data creates a post" do
-      assert {:ok, %Post{} = post} = Content.create_post(@valid_attrs)
+      assert {:ok, %Post{} = post} = Posts.create_post(@valid_attrs)
       assert post.body == "some body"
+      assert post.email == "some email"
+      assert post.name == "some name"
       assert post.title == "some title"
     end
 
@@ -41,8 +43,10 @@ defmodule Blog.ContentTest do
 
     test "update_post/2 with valid data updates the post" do
       post = post_fixture()
-      assert {:ok, %Post{} = post} = Content.update_post(post, @update_attrs)
+      assert {:ok, %Post{} = post} = Posts.update_post(post, @update_attrs)
       assert post.body == "some updated body"
+      assert post.email == "some updated email"
+      assert post.name == "some updated name"
       assert post.title == "some updated title"
     end
 

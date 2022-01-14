@@ -3,10 +3,9 @@ defmodule BlogWeb.PostControllerTest do
 
   alias Blog.Content
 
-  @create_attrs %{body: "some body", title: "some title"}
-  @update_attrs %{body: "some updated body", title: "some updated title"}
-  @invalid_attrs %{body: nil, title: nil}
-
+  @create_attrs %{body: "some body", email: "some email", name: "some name", title: "some title"}
+  @update_attrs %{body: "some updated body", email: "some updated email", name: "some updated name", title: "some updated title"}
+  @invalid_attrs %{body: nil, email: nil, name: nil, title: nil}
   def fixture(:post) do
     {:ok, post} = Content.create_post(@create_attrs)
     post
