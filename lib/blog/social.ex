@@ -5,8 +5,8 @@ defmodule Blog.Social do
 
   import Ecto.Query, warn: false
   alias Blog.Repo
-  alias Blog.Social
   alias Blog.Social.Comment
+  #alias Blog.Social
 
   @doc """
   Returns the list of comments.
@@ -102,9 +102,9 @@ defmodule Blog.Social do
     Comment.changeset(comment, attrs)
   end
 
-  def add_comment(post_id, comment_params) do
-    comment_params
-    |> Map.put("post_id", post_id)
-    |> Social.create_comment()
-  end
+  #def add_comment(post_id, comment_params) do
+  #    comment_params
+  #    |> Map.put("post_id", post_id)
+  #    |> Social.create_comment()
+  #  end
 end

@@ -12,6 +12,17 @@
     <%= @post.body %>
   </li>
 
+  <li>
+    <strong>Name:</strong>
+    <%= @post.name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @post.email %>
+  </li>
+
+
 </ul>
 
 <%= render "comments.html", comments: @post.comments %>
