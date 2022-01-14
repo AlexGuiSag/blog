@@ -101,6 +101,7 @@ defmodule Blog.Content do
   def change_post(%Post{} = post, attrs \\ %{}) do
     Post.changeset(post, attrs)
   end
+
   def get_number_of_comments(post_id) do
     post = Content.get_post!(post_id) |> Repo.preload([:comments])
     Enum.count(post.comments)

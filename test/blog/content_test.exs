@@ -7,7 +7,12 @@ defmodule Blog.ContentTest do
     alias Blog.Content.Post
 
     @valid_attrs %{body: "some body", email: "some email", name: "some name", title: "some title"}
-    @update_attrs %{body: "some updated body", email: "some updated email", name: "some updated name", title: "some updated title"}
+    @update_attrs %{
+      body: "some updated body",
+      email: "some updated email",
+      name: "some updated name",
+      title: "some updated title"
+    }
     @invalid_attrs %{body: nil, email: nil, name: nil, title: nil}
 
     def post_fixture(attrs \\ %{}) do

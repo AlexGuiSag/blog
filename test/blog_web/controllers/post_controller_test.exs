@@ -4,7 +4,12 @@ defmodule BlogWeb.PostControllerTest do
   alias Blog.Content
 
   @create_attrs %{body: "some body", email: "some email", name: "some name", title: "some title"}
-  @update_attrs %{body: "some updated body", email: "some updated email", name: "some updated name", title: "some updated title"}
+  @update_attrs %{
+    body: "some updated body",
+    email: "some updated email",
+    name: "some updated name",
+    title: "some updated title"
+  }
   @invalid_attrs %{body: nil, email: nil, name: nil, title: nil}
   def fixture(:post) do
     {:ok, post} = Content.create_post(@create_attrs)
@@ -74,6 +79,7 @@ defmodule BlogWeb.PostControllerTest do
     test "deletes chosen post", %{conn: conn, post: post} do
       conn = delete(conn, Routes.post_path(conn, :delete, post))
       assert redirected_to(conn) == Routes.post_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.post_path(conn, :show, post))
       end
