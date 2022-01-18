@@ -21,6 +21,7 @@ defmodule BlogWeb.Router do
     resources "/posts", PostController do
       post "/comment", CommentController, :create
     end
+    resources "/categories", CategoryController
   end
 
   # Other scopes may use custom stacks.
