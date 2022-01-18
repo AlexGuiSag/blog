@@ -16,7 +16,6 @@ defmodule BlogWeb.PostController do
     render(conn, "new.html", changeset: changeset)
   end
 
-
   def create(conn, %{"post" => post_params}) do
     case Content.create_post(post_params) do
       {:ok, post} ->
@@ -32,10 +31,8 @@ defmodule BlogWeb.PostController do
   def show(conn, %{"id" => id}) do
     post =
       id
-      |> Content.get_post!
+      |> Content.get_post!()
       |> Repo.preload([:comments])
-
-   # IO.inspect(post)
 
     changeset = Comment.changeset(%Comment{}, %{})
     render(conn, "show.html", post: post, changeset: changeset)
