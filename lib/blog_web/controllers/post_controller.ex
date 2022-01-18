@@ -34,8 +34,6 @@ defmodule BlogWeb.PostController do
       |> Content.get_post!()
       |> Repo.preload([:comments])
 
-    # IO.inspect(post)
-
     changeset = Comment.changeset(%Comment{}, %{})
     render(conn, "show.html", post: post, changeset: changeset)
   end

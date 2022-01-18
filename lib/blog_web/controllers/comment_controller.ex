@@ -13,7 +13,6 @@ defmodule BlogWeb.CommentController do
       |> Content.get_post!()
       |> Repo.preload([:comments])
 
-    # Post = 1
     case Social.create_comment(attrs) do
       {:ok, _comment} ->
         conn
