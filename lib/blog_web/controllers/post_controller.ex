@@ -36,6 +36,9 @@ defmodule BlogWeb.PostController do
 
     changeset = Comment.changeset(%Comment{}, %{})
     render(conn, "show.html", post: post, changeset: changeset)
+
+    IO.inspect(post, label: "este es el post")
+
   end
 
   def edit(conn, %{"id" => id}) do
