@@ -20,6 +20,8 @@
   <%= text_input f, :email %>
   <%= error_tag f, :email %>
 
+  options_for_select(["Category": ["Category 1", "Category 2", "Category 3", "Category 4"], nill])
+
   <div>
     <%= submit "Save" %>
   </div>
