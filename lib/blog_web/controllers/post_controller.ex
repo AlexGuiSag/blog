@@ -16,16 +16,16 @@ defmodule BlogWeb.PostController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"post" => post_params}) do
-    case Content.create_post(post_params) do
-      {:ok, post} ->
-        conn
-        |> put_flash(:info, "Post created successfully.")
-        |> redirect(to: Routes.post_path(conn, :show, post))
+  def create(conn, %{"category_id" => category_id, "params" => post_params}) do
+    attrs = post_params |> Map.put("category_id", category_id)
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
-    end
+
+      case Content.create_post(attrs) do
+        {:ok, _create_post} ->
+          conn
+          |> put_flash(:info, "Post created successfully.")
+          |> redirect(to: Routes.post_path(conn, :show, post_params))
+      end
   end
 
   def show(conn, %{"id" => id}) do
